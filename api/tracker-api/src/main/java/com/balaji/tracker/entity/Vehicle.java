@@ -17,17 +17,8 @@ public class Vehicle {
     private String model;
     private int year;
     private int redlineRpm;
-
-    public float getMaxFuelVolume() {
-        return maxFuelVolume;
-    }
-
-    public void setMaxFuelVolume(float maxFuelVolume) {
-        this.maxFuelVolume = maxFuelVolume;
-    }
-
     private float maxFuelVolume;
-
+    private Date lastServiceDate;
 
     public String getVin() {
         return vin;
@@ -69,12 +60,12 @@ public class Vehicle {
         this.redlineRpm = redlineRpm;
     }
 
-    public int getMaxFuelVol() {
-        return maxFuelVol;
+    public float getMaxFuelVolume() {
+        return maxFuelVolume;
     }
 
-    public void setMaxFuelVol(int maxFuelVol) {
-        this.maxFuelVol = maxFuelVol;
+    public void setMaxFuelVolume(float maxFuelVolume) {
+        this.maxFuelVolume = maxFuelVolume;
     }
 
     public Date getLastServiceDate() {
@@ -85,9 +76,6 @@ public class Vehicle {
         this.lastServiceDate = lastServiceDate;
     }
 
-    private int maxFuelVol;
-    private Date lastServiceDate;
-
     @Override
     public String toString() {
         return "Vehicle{" +
@@ -96,7 +84,7 @@ public class Vehicle {
                 ", model='" + model + '\'' +
                 ", year=" + year +
                 ", redlineRpm=" + redlineRpm +
-                ", maxFuelVol=" + maxFuelVol +
+                ", maxFuelVolume=" + maxFuelVolume +
                 ", lastServiceDate=" + lastServiceDate +
                 '}';
     }

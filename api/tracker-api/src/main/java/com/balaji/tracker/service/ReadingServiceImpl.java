@@ -71,7 +71,7 @@ public class ReadingServiceImpl implements ReadingService {
             result.add(newAlert);
         }
 
-        if(reading.getFuelVolume()< (0.1*currentVehicle.getMaxFuelVol())) {
+        if(reading.getFuelVolume()< (0.1*currentVehicle.getMaxFuelVolume())) {
             Alert newAlert = new Alert();
             newAlert.setAlertCreationTime(Calendar.getInstance().getTime());
             newAlert.setVin(reading.getVin());
