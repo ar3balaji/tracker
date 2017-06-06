@@ -6,7 +6,7 @@ import com.balaji.tracker.pojo.VehicleResult;
 import java.util.List;
 
 public interface VehicleRepository {
-    List<VehicleResult> findAll(String sortParam);
+    List<VehicleResult> findAll(String sortParam, int total);
 
     Vehicle findOne(String vin);
 

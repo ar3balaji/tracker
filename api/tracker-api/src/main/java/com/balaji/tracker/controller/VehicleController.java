@@ -18,8 +18,9 @@ public class VehicleController {
 
     @RequestMapping(method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public List<VehicleResult> findAll(@RequestParam(value="qSort",required = false , defaultValue="desc") String sortParam) {
-        return service.findAll(sortParam);
+    public List<VehicleResult> findAll(@RequestParam(value="qSort",required = false , defaultValue="desc") String sortParam,
+                                       @RequestParam(value="total",required = false , defaultValue="50") int total) {
+        return service.findAll(sortParam, total);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "{vin}",

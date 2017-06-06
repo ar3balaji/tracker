@@ -18,8 +18,8 @@ public class VehicleServiceImpl implements VehicleService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<VehicleResult> findAll(String sortParam) {
-        return repository.findAll(sortParam);
+    public List<VehicleResult> findAll(String sortParam, int total) {
+        return repository.findAll(sortParam, total);
     }
 
     @Override

@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
 import javax.persistence.Query;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +17,7 @@ public class VehicleRepositoryImpl implements VehicleRepository {
     private EntityManager em;
 
     @Override
-    public List<VehicleResult> findAll(String sortParam) {
+    public List<VehicleResult> findAll(String sortParam, int total) {
 
         String hql = "select v.vin as vin, v.make as make, v.model as model, v.year as year, v.redlineRpm as redlineRpm," +
                 "v.maxFuelVolume as maxFuelVolume, v.lastServiceDate as lastServiceDate, count(*) as highAlertCount " +
@@ -28,7 +27,7 @@ public class VehicleRepositoryImpl implements VehicleRepository {
                 "order by count(*) " + sortParam;
         Query query = em.createQuery(hql);
         query.setParameter("date", new Date(System.currentTimeMillis() - 2*60*60*1000));
-
+        query.setMaxResults(total);
         List<VehicleResult> results = new ArrayList<VehicleResult>();
         for(Object result: query.getResultList()) {
             VehicleResult temp = new VehicleResult();

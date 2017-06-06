@@ -6,9 +6,9 @@ import javax.persistence.*;
 @Entity
 @NamedQueries({
         @NamedQuery(name = "Alert.findAll",
-                query = "SELECT rea FROM Alert rea"),
+                query = "SELECT rea FROM Alert rea order by rea.alertCreationTime desc"),
         @NamedQuery(name = "Alert.findByVin",
-                query = "SELECT rea FROM Alert rea WHERE rea.vin=:pVin")
+                query = "SELECT rea FROM Alert rea WHERE rea.vin=:pVin order by rea.alertCreationTime desc")
 })
 public class Alert {
 
