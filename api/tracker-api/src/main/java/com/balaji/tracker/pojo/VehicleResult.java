@@ -1,14 +1,9 @@
-package com.balaji.tracker.entity;
+package com.balaji.tracker.pojo;
 
-import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
-@Entity
-public class Vehicle {
 
-    @Id
-    @Column(columnDefinition = "varchar(36)")
+public class VehicleResult {
     private String vin;
     private String make;
     private String model;
@@ -16,6 +11,7 @@ public class Vehicle {
     private int redlineRpm;
     private float maxFuelVolume;
     private Date lastServiceDate;
+    private long highAlertCount;
 
     public String getVin() {
         return vin;
@@ -73,9 +69,17 @@ public class Vehicle {
         this.lastServiceDate = lastServiceDate;
     }
 
+    public long getHighAlertCount() {
+        return highAlertCount;
+    }
+
+    public void setHighAlertCount(long highAlertCount) {
+        this.highAlertCount = highAlertCount;
+    }
+
     @Override
     public String toString() {
-        return "Vehicle{" +
+        return "VehicleResult{" +
                 "vin='" + vin + '\'' +
                 ", make='" + make + '\'' +
                 ", model='" + model + '\'' +
@@ -83,6 +87,7 @@ public class Vehicle {
                 ", redlineRpm=" + redlineRpm +
                 ", maxFuelVolume=" + maxFuelVolume +
                 ", lastServiceDate=" + lastServiceDate +
+                ", highAlertCount=" + highAlertCount +
                 '}';
     }
 }

@@ -64,7 +64,7 @@ public class ReadingServiceImpl implements ReadingService {
         if(reading.getEngineRpm()>currentVehicle.getRedlineRpm()) {
             Alert newAlert = new Alert();
             newAlert.setAlertCreationTime(Calendar.getInstance().getTime());
-            newAlert.setVin(reading.getVin());
+            newAlert.setVin(currentVehicle.getVin());
             newAlert.setAlertCleared(false);
             newAlert.setAlertPriority("HIGH");
             newAlert.setAlertType("Engine RPM");
@@ -74,7 +74,7 @@ public class ReadingServiceImpl implements ReadingService {
         if(reading.getFuelVolume()< (0.1*currentVehicle.getMaxFuelVolume())) {
             Alert newAlert = new Alert();
             newAlert.setAlertCreationTime(Calendar.getInstance().getTime());
-            newAlert.setVin(reading.getVin());
+            newAlert.setVin(currentVehicle.getVin());
             newAlert.setAlertCleared(false);
             newAlert.setAlertPriority("MEDIUM");
             newAlert.setAlertType("Fuel volume");
@@ -84,7 +84,7 @@ public class ReadingServiceImpl implements ReadingService {
         if(reading.getTires().getFrontLeft()<32 || reading.getTires().getFrontLeft()>36) {
             Alert newAlert = new Alert();
             newAlert.setAlertCreationTime(Calendar.getInstance().getTime());
-            newAlert.setVin(reading.getVin());
+            newAlert.setVin(currentVehicle.getVin());
             newAlert.setAlertCleared(false);
             newAlert.setAlertPriority("LOW");
             newAlert.setAlertType("Front left tire pressure");
@@ -94,7 +94,7 @@ public class ReadingServiceImpl implements ReadingService {
         if(reading.getTires().getFrontRight()<32 || reading.getTires().getFrontRight()>36) {
             Alert newAlert = new Alert();
             newAlert.setAlertCreationTime(Calendar.getInstance().getTime());
-            newAlert.setVin(reading.getVin());
+            newAlert.setVin(currentVehicle.getVin());
             newAlert.setAlertCleared(false);
             newAlert.setAlertPriority("LOW");
             newAlert.setAlertType("Front right tire pressure");
@@ -104,7 +104,7 @@ public class ReadingServiceImpl implements ReadingService {
         if(reading.getTires().getRearLeft()<32 || reading.getTires().getRearLeft()>36) {
             Alert newAlert = new Alert();
             newAlert.setAlertCreationTime(Calendar.getInstance().getTime());
-            newAlert.setVin(reading.getVin());
+            newAlert.setVin(currentVehicle.getVin());
             newAlert.setAlertCleared(false);
             newAlert.setAlertPriority("LOW");
             newAlert.setAlertType("Rear left tire pressure");
@@ -114,7 +114,7 @@ public class ReadingServiceImpl implements ReadingService {
         if(reading.getTires().getRearRight()<32 || reading.getTires().getRearRight()>36) {
             Alert newAlert = new Alert();
             newAlert.setAlertCreationTime(Calendar.getInstance().getTime());
-            newAlert.setVin(reading.getVin());
+            newAlert.setVin(currentVehicle.getVin());
             newAlert.setAlertCleared(false);
             newAlert.setAlertPriority("LOW");
             newAlert.setAlertType("Rear right tire pressure");
@@ -124,7 +124,7 @@ public class ReadingServiceImpl implements ReadingService {
         if(reading.isCheckEngineLightOn()||reading.isEngineCoolantLow()) {
             Alert newAlert = new Alert();
             newAlert.setAlertCreationTime(Calendar.getInstance().getTime());
-            newAlert.setVin(reading.getVin());
+            newAlert.setVin(currentVehicle.getVin());
             newAlert.setAlertCleared(false);
             newAlert.setAlertPriority("LOW");
             if(reading.isCheckEngineLightOn()) {

@@ -1,13 +1,14 @@
 package com.balaji.tracker.service;
 
 import com.balaji.tracker.entity.Vehicle;
+import com.balaji.tracker.pojo.VehicleResult;
 
 import java.util.List;
 
 public interface VehicleService {
-    List<Vehicle> findAll();
+    List<VehicleResult> findAll(String sortParam);
 
-    Vehicle findOne(String vin);
+    VehicleResult findOne(String vin);
 
     Vehicle create(Vehicle veh);
 

@@ -1,6 +1,7 @@
 package com.balaji.tracker.controller;
 
 import com.balaji.tracker.entity.Vehicle;
+import com.balaji.tracker.pojo.VehicleResult;
 import com.balaji.tracker.service.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -17,13 +18,13 @@ public class VehicleController {
 
     @RequestMapping(method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public List<Vehicle> findAll() {
-        return service.findAll();
+    public List<VehicleResult> findAll(@RequestParam(value="qSort",required = false , defaultValue="desc") String sortParam) {
+        return service.findAll(sortParam);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "{vin}",
             produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public Vehicle findOne(@PathVariable("vin") String vehId) {
+    public VehicleResult findOne(@PathVariable("vin") String vehId) {
         return service.findOne(vehId);
     }
 

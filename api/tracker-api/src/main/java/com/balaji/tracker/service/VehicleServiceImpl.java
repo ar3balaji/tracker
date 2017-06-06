@@ -2,6 +2,7 @@ package com.balaji.tracker.service;
 
 import com.balaji.tracker.entity.Vehicle;
 import com.balaji.tracker.exception.NotFoundException;
+import com.balaji.tracker.pojo.VehicleResult;
 import com.balaji.tracker.repository.VehicleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,18 +18,21 @@ public class VehicleServiceImpl implements VehicleService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<Vehicle> findAll() {
-        return repository.findAll();
+    public List<VehicleResult> findAll(String sortParam) {
+        return repository.findAll(sortParam);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public Vehicle findOne(String vin) {
+    public VehicleResult findOne(String vin) {
         Vehicle vehicle = repository.findOne(vin);
+        VehicleResult result;
         if (vehicle == null) {
             throw new NotFoundException("Vechile with vin=" + vin + " not found");
+        } else {
+            result = repository.findVehicleResult(vin);
         }
-        return vehicle;
+        return result;
     }
 
     @Override
