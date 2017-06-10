@@ -1,0 +1,28 @@
+<div class="container">
+    <h2>User List</h2>
+    <div>
+        <input type="search" ng-model="usersVm.searchText.email" placeholder="Search goes here..." class="form-control">
+    </div>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th></th>
+            <th ng-click="usersVm.changeSort('firstName')">Name</th>
+            <th ng-click="usersVm.changeSort('email')">Email</th>
+            <th ng-click="usersVm.changeSort('address.city')">City</th>
+            <th ng-click="usersVm.changeSort('company.name')">Company</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="user in usersVm.users | filter:usersVm.searchText | orderBy:usersVm.sorter.by:usersVm.sorter.reverse">
+            <td><a ng-href="#/users/{{user.id}}"><img ng-src="{{user.profilePic}}"></a></td>
+            <td>{{user.firstName}} {{user.lastName}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.address.city}}</td>
+            <td>{{user.company.name}}</td>
+            <td><i ng-click="usersVm.deleteUser($index)" class="glyphicon glyphicon-remove"></i></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
