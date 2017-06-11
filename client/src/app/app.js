@@ -25,6 +25,11 @@
             controller: 'VehiclesController',
             controllerAs: 'vehiclesVm'
             })
+            .when('/alerts/:id', {
+                templateUrl: '/app/views/alerts.tmpl.html',
+                controller: 'AlertsController',
+                controllerAs: 'alertsVm'
+            })
             .otherwise({
                 redirectTo: '/vehicles'
             });
