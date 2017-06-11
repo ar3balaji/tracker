@@ -30,6 +30,11 @@
                 controller: 'AlertsController',
                 controllerAs: 'alertsVm'
             })
+            .when('/graphs/:id', {
+                templateUrl: '/app/views/chart.tmpl.html',
+                controller: 'ChartController',
+                controllerAs: 'chartVm'
+            })
             .otherwise({
                 redirectTo: '/vehicles'
             });

@@ -1,0 +1,23 @@
+<div class="container" ng-controller="ChartController as chartVm">
+    <form>
+        <label>
+            <input type="radio" ng-change="chartVm.changeFilter('last30min')" ng-model="chartVm.filter.name" value="last30min">
+            Last 30 minutes
+        </label> <br>
+        <label>
+            <input type="radio" ng-change="chartVm.changeFilter('last1hr')" ng-model="chartVm.filter.name" value="last1hr">
+            Last one Hour
+        </label><br>
+        <label>
+            <input type="radio"ng-change="chartVm.changeFilter('last2hr')" ng-model="chartVm.filter.name" value="last2hr">
+            Last Two hours
+        </label><br>
+        <label>
+            <input type="radio" ng-change="chartVm.changeFilter('last1d')" ng-model="chartVm.filter.name" value="last1d">
+            Last One day
+        </label><br>
+    </form>
+    <chart title="Vehicle Readings" xName="Month" yName="Hit">
+
+    </chart>
+</div>
