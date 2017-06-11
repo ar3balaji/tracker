@@ -17,7 +17,7 @@ gulp.task('clean', function() {
        .pipe(clean());
 });
 
-gulp.task('inject', function () {
+gulp.task('inject', ['clean'], function () {
     var cssFiles = gulp.src([
        config.paths.src + '/**/*.css'
     ], {read: false});

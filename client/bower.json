@@ -12,11 +12,12 @@
     "bootstrap": "^3.3.6",
     "angular-route": "^1.4.9",
     "angular-messages": "^1.4.9",
-    "angular-bootstrap": "^1.3.2"
+    "angular-bootstrap": "^1.3.2",
+    "angularUtils-pagination": "angular-utils-pagination#^0.11.1"
   },
-  "overrides" : {
-    "bootstrap" : {
-      "main" : [
+  "overrides": {
+    "bootstrap": {
+      "main": [
         "dist/css/bootstrap.css",
         "dist/fonts/glyphicons-halflings-regular.eot",
         "dist/fonts/glyphicons-halflings-regular.svg",
@@ -25,8 +26,8 @@
         "dist/fonts/glyphicons-halflings-regular.woff2"
       ]
     },
-    "jquery" : {
-      "main" : []
+    "jquery": {
+      "main": []
     }
   }
 }

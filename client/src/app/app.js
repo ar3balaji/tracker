@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('plunker', ['ngRoute'])
+        .module('plunker', ['ngRoute', 'angularUtils.directives.dirPagination'])
         .config(moduleConfig);
 
     moduleConfig.$inject = ['$routeProvider'];
@@ -20,8 +20,13 @@
                 controller: 'UserDetailController',
                 controllerAs: 'userDetailVm'
             })
+            .when('/vehicles', {
+            templateUrl: '/app/views/vehicles.tmpl.html',
+            controller: 'VehiclesController',
+            controllerAs: 'vehiclesVm'
+            })
             .otherwise({
-                redirectTo: '/users'
+                redirectTo: '/vehicles'
             });
     }
 
