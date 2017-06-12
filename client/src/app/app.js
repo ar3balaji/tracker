@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -10,20 +10,15 @@
     function moduleConfig($routeProvider) {
 
         $routeProvider
-            .when('/users', {
-                templateUrl: '/app/views/users.tmpl.html',
-                controller: 'UsersController',
-                controllerAs: 'usersVm'
-            })
-            .when('/users/:id', {
-                templateUrl: '/app/views/user-detail.tmpl.html',
-                controller: 'UserDetailController',
-                controllerAs: 'userDetailVm'
+            .when('/map/:id', {
+                templateUrl: '/app/views/map.tmpl.html',
+                controller: 'MapController',
+                controllerAs: 'mapVm'
             })
             .when('/vehicles', {
-            templateUrl: '/app/views/vehicles.tmpl.html',
-            controller: 'VehiclesController',
-            controllerAs: 'vehiclesVm'
+                templateUrl: '/app/views/vehicles.tmpl.html',
+                controller: 'VehiclesController',
+                controllerAs: 'vehiclesVm'
             })
             .when('/alerts/:id', {
                 templateUrl: '/app/views/alerts.tmpl.html',

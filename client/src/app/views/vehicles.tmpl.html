@@ -22,7 +22,7 @@
         <tbody>
         <tr dir-paginate="vehicle in vehiclesVm.vehicles | filter:vehiclesVm.searchText.vin | orderBy:vehiclesVm.sorter.by:vehiclesVm.sorter.reverse | itemsPerPage:5">
             <td>{{vehicle.highAlertCount}}</td>
-            <td><a ng-href="#!/geomap/{{vehicle.vin}}"><img src='./images/map.png'></a></td>
+            <td><a ng-href="#!/map/{{vehicle.vin}}"><img src='./images/map.png'></a></td>
             <td><a ng-href="#!/graphs/{{vehicle.vin}}"><img src='./images/graph.png'></a></td>
             <td><a ng-href="#!/alerts/{{vehicle.vin}}"><img src='./images/alerts.png'></a></td>
             <td>{{vehicle.vin}}</td>
