@@ -34,6 +34,13 @@
                             icon: 'https://maps.google.com/mapfiles/ms/icons/green-dot.png'
                         });
                     });
+                    if (xData.length > 0) {
+                        maponeVm.showMap = true;
+                        maponeVm.showError = false;
+                    } else {
+                        maponeVm.showMap = false;
+                        maponeVm.showError = true;
+                    }
                     maponeVm.map.markers = xData;
                 }, function (error) {
                     console.log(error);
