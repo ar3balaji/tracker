@@ -4,9 +4,9 @@
     angular.module('plunker')
         .service('vehiclesService', vehiclesService);
 
-    vehiclesService.$inject = ['$http', '$q'];
+    vehiclesService.$inject = ['$http', '$q', 'CONFIG'];
 
-    function vehiclesService($http, $q) {
+    function vehiclesService($http, $q, CONFIG) {
 
         var self = this;
 
@@ -14,12 +14,12 @@
         self.getVehicleById = getVehicleById;
 
         function getVehicles() {
-            return $http.get('http://localhost:8080/api/vehicles')
+            return $http.get(CONFIG.API_HOST+'/vehicles')
                 .then(successFn, errorFn);
         }
 
         function getVehicleById(id) {
-            return $http.get('http://localhost:8080/api/vehicles/' + id)
+            return $http.get(CONFIG.API_HOST+'/vehicles/' + id)
                 .then(successFn, errorFn);
         }
 

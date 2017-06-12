@@ -4,16 +4,16 @@
     angular.module('plunker')
         .service('chartService', chartService);
 
-    chartService.$inject = ['$http', '$q'];
+    chartService.$inject = ['$http', '$q', 'CONFIG'];
 
-    function chartService($http, $q) {
+    function chartService($http, $q, CONFIG) {
 
         var self = this;
 
         self.getReadingsByVin = getReadingsByVin;
 
         function getReadingsByVin(id, filter) {
-            return $http.get('http://localhost:8080/api/readings/' + id +'?filter='+filter)
+            return $http.get(CONFIG.API_HOST+'/readings/' + id +'?filter='+filter)
                 .then(successFn, errorFn);
         }
 
