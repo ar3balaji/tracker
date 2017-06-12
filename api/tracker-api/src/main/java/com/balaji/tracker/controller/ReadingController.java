@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://mocker.egen.io", maxAge = 3600)
+@CrossOrigin(origins = { "http://localhost:3000","http://mocker.egen.io"}, maxAge = 3600)
 @RestController
 @RequestMapping(value = "readings")
 public class ReadingController {
@@ -25,8 +25,8 @@ public class ReadingController {
 
     @RequestMapping(method = RequestMethod.GET, value = "{vin}",
             produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public List<Reading> findOne(@PathVariable("vin") String vin) {
-        return service.findReadingsFromVehicle(vin);
+    public List<Reading> findOne(@PathVariable("vin") String vin, @RequestParam(value="filter",required = false , defaultValue="normal") String filter) {
+        return service.findReadingsFromVehicle(vin, filter);
     }
 
     @RequestMapping(method = RequestMethod.POST,

@@ -8,7 +8,7 @@ public interface ReadingRepository {
 
     Reading findOne(String readingId);
 
-    List<Reading> findReadingsFromVehicle(String vin);
+    List<Reading> findReadingsFromVehicle(String vin, String filter);
 
     Reading create(Reading reading);
 

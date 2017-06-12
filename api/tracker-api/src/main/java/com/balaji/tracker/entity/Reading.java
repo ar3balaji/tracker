@@ -7,9 +7,11 @@ import java.util.UUID;
 @Entity
 @NamedQueries({
         @NamedQuery(name = "Reading.findAll",
-                query = "SELECT rea FROM Reading rea"),
+                query = "SELECT rea FROM Reading rea order by rea.timestamp"),
         @NamedQuery(name = "Reading.findByVin",
-                query = "SELECT rea FROM Reading rea WHERE rea.vin=:pVin")
+                query = "SELECT rea FROM Reading rea WHERE rea.vin=:pVin order by rea.timestamp"),
+        @NamedQuery(name = "Reading.findByVinWithFilter",
+                query = "SELECT rea FROM Reading rea WHERE rea.vin=:pVin and rea.timestamp >=:pDate order by rea.timestamp"),
 })
 public class Reading {
 

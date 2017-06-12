@@ -1,5 +1,6 @@
 package com.balaji.tracker.pojo;
 
+import java.math.BigInteger;
 import java.util.Date;
 
 
@@ -11,7 +12,7 @@ public class VehicleResult {
     private int redlineRpm;
     private float maxFuelVolume;
     private Date lastServiceDate;
-    private long highAlertCount;
+    private BigInteger highAlertCount;
 
     public String getVin() {
         return vin;
@@ -69,11 +70,11 @@ public class VehicleResult {
         this.lastServiceDate = lastServiceDate;
     }
 
-    public long getHighAlertCount() {
+    public BigInteger getHighAlertCount() {
         return highAlertCount;
     }
 
-    public void setHighAlertCount(long highAlertCount) {
+    public void setHighAlertCount(BigInteger highAlertCount) {
         this.highAlertCount = highAlertCount;
     }
 

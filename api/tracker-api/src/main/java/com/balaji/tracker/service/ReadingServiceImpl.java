@@ -32,7 +32,7 @@ public class ReadingServiceImpl implements ReadingService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<Reading> findReadingsFromVehicle(String vin) { return repository.findReadingsFromVehicle(vin); }
+    public List<Reading> findReadingsFromVehicle(String vin, String filter) { return repository.findReadingsFromVehicle(vin, filter); }
 
     @Override
     @Transactional

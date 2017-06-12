@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
@@ -20,14 +21,13 @@ public class VehicleRepositoryImpl implements VehicleRepository {
     public List<VehicleResult> findAll(String sortParam, int total) {
 
         String hql = "select v.vin as vin, v.make as make, v.model as model, v.year as year, v.redlineRpm as redlineRpm," +
-                "v.maxFuelVolume as maxFuelVolume, v.lastServiceDate as lastServiceDate, count(*) as highAlertCount " +
-                "from Vehicle as v left outer join Alert as a on v.vin = a.vin " +
-                "where a.alertPriority='HIGH' and a.alertCreationTime >= :date " +
+                "v.maxFuelVolume as maxFuelVolume, v.lastServiceDate as lastServiceDate, count(a.vin) as highAlertCount " +
+                "from Vehicle as v left join (select * from Alert where alertPriority='HIGH' and alertCreationTime >= :date ) as a " +
+                "on v.vin = a.vin " +
                 "group by v.vin " +
                 "order by count(*) " + sortParam;
-        Query query = em.createQuery(hql);
+        Query query = em.createNativeQuery(hql);
         query.setParameter("date", new Date(System.currentTimeMillis() - 2*60*60*1000));
-        query.setMaxResults(total);
         List<VehicleResult> results = new ArrayList<VehicleResult>();
         for(Object result: query.getResultList()) {
             VehicleResult temp = new VehicleResult();
@@ -39,7 +39,7 @@ public class VehicleRepositoryImpl implements VehicleRepository {
             temp.setRedlineRpm((int)tuple[4]);
             temp.setMaxFuelVolume((float)tuple[5]);
             temp.setLastServiceDate((Date)tuple[6]);
-            temp.setHighAlertCount((long)tuple[7]);
+            temp.setHighAlertCount(((BigInteger)tuple[7]));
             results.add(temp);
         }
         return results;
@@ -49,11 +49,11 @@ public class VehicleRepositoryImpl implements VehicleRepository {
     public VehicleResult findVehicleResult(String vin) {
 
         String hql = "select v.vin as vin, v.make as make, v.model as model, v.year as year, v.redlineRpm as redlineRpm," +
-                "v.maxFuelVolume as maxFuelVolume, v.lastServiceDate as lastServiceDate, count(*) as highAlertCount " +
-                "from Vehicle as v left outer join Alert as a on v.vin = a.vin " +
-                "where a.alertPriority='HIGH' and a.alertCreationTime >= :date and v.vin = :vin " +
-                "group by v.vin ";
-        Query query = em.createQuery(hql);
+                "v.maxFuelVolume as maxFuelVolume, v.lastServiceDate as lastServiceDate, count(a.vin) as highAlertCount " +
+                "from Vehicle as v left join (select * from Alert where alertPriority='HIGH' and alertCreationTime >= :date ) as a " +
+                "on v.vin = a.vin " +
+                "group by v.vin having v.vin=:vin";
+        Query query = em.createNativeQuery(hql);
         query.setParameter("date", new Date(System.currentTimeMillis() - 2*60*60*1000));
         query.setParameter("vin", vin);
         VehicleResult temp= null;
@@ -67,7 +67,7 @@ public class VehicleRepositoryImpl implements VehicleRepository {
             temp.setRedlineRpm((int)tuple[4]);
             temp.setMaxFuelVolume((float)tuple[5]);
             temp.setLastServiceDate((Date)tuple[6]);
-            temp.setHighAlertCount((long)tuple[7]);
+            temp.setHighAlertCount((BigInteger) tuple[7]);
         }
         return temp;
     }

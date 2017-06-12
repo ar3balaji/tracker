@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://mocker.egen.io", maxAge = 3600)
+@CrossOrigin(origins = { "http://localhost:3000","http://mocker.egen.io"}, maxAge = 3600)
 @RestController
 @RequestMapping(value = "alerts")
 public class AlertController {

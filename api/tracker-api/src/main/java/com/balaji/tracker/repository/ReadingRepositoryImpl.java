@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -21,8 +22,21 @@ public class ReadingRepositoryImpl implements ReadingRepository {
     }
 
     @Override
-    public List<Reading> findReadingsFromVehicle(String vin) {
+    public List<Reading> findReadingsFromVehicle(String vin, String filter) {
         TypedQuery<Reading> query = em.createNamedQuery("Reading.findByVin", Reading.class);
+        if(filter.equalsIgnoreCase("last1d")) {
+            query = em.createNamedQuery("Reading.findByVinWithFilter", Reading.class);
+            query.setParameter("pDate", new Date(System.currentTimeMillis() - 24*60*60*1000));
+        } else if (filter.equalsIgnoreCase("last30min")) {
+            query = em.createNamedQuery("Reading.findByVinWithFilter", Reading.class);
+            query.setParameter("pDate", new Date(System.currentTimeMillis() - 30*60*1000));
+        } else if (filter.equalsIgnoreCase("last1hr")) {
+            query = em.createNamedQuery("Reading.findByVinWithFilter", Reading.class);
+            query.setParameter("pDate", new Date(System.currentTimeMillis() - 60*60*1000));
+        } else if (filter.equalsIgnoreCase("last2hr")) {
+            query = em.createNamedQuery("Reading.findByVinWithFilter", Reading.class);
+            query.setParameter("pDate", new Date(System.currentTimeMillis() - 2*60*60*1000));
+        }
         query.setParameter("pVin", vin);
         return query.getResultList();
     }

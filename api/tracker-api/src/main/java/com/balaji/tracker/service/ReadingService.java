@@ -7,7 +7,7 @@ import java.util.List;
 public interface ReadingService {
     List<Reading> findAll();
 
-    List<Reading> findReadingsFromVehicle(String vin);
+    List<Reading> findReadingsFromVehicle(String vin, String filter);
 
     Reading create(Reading reading);
 
