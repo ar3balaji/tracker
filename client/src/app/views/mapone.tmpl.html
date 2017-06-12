@@ -1,0 +1,6 @@
+<div  ng-controller="MaponeController as maponeVm">
+    <ui-gmap-google-map center='maponeVm.map.center' zoom='maponeVm.map.zoom' >
+        <ui-gmap-marker ng-repeat="m in maponeVm.map.markers" coords="m.coords" icon="m.icon" idkey="m.id">
+        </ui-gmap-marker>
+    </ui-gmap-google-map>
+</div>

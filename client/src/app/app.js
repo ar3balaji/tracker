@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('plunker', ['ngRoute', 'angularUtils.directives.dirPagination'])
+        .module('plunker', ['ngRoute', 'angularUtils.directives.dirPagination', 'uiGmapgoogle-maps'])
         .config(moduleConfig);
 
     moduleConfig.$inject = ['$routeProvider'];
@@ -11,9 +11,9 @@
 
         $routeProvider
             .when('/map/:id', {
-                templateUrl: '/app/views/map.tmpl.html',
-                controller: 'MapController',
-                controllerAs: 'mapVm'
+                templateUrl: '/app/views/mapone.tmpl.html',
+                controller: 'MaponeController',
+                controllerAs: 'maponeVm'
             })
             .when('/vehicles', {
                 templateUrl: '/app/views/vehicles.tmpl.html',
