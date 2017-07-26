@@ -1,0 +1,10 @@
+.DS_Store
+api/tracker-api/.idea/*
+api/tracker-api/target/*
+*.iml
+
+.idea/modules.xml
+
+.idea/vcs.xml
+
+.idea/workspace.xml
