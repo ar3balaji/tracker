@@ -2,9 +2,10 @@
 api/tracker-api/.idea/*
 api/tracker-api/target/*
 *.iml
-
 .idea/*.xml
-
 client/bower_components
 client/node_modules
 client/build
+.idea/modules.xml
+.idea/vcs.xml
+.idea/workspace.xml
